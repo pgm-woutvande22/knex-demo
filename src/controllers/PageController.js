@@ -6,6 +6,9 @@
 
 import menuItems from "../data/navigation.js";
 import userData from "../data/user.js";
+import NavigationItem from "../models/NavigationItem.js";
+
+const menuItems = await NavigationItem.query();
 
 export const home = async (req, res) => {
   const pageData = {
