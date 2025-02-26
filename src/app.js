@@ -32,7 +32,7 @@ Object.assign(app.locals, helpers); // make the helpers available to all views
 app.get("/api/interest", API_InterestController.index);
 app.get("/api/interest/:id", API_InterestController.show);
 app.post("/api/interest", API_InterestController.store);
-app.put("/api/interest", API_InterestController.update);
+app.put("/api/interest/:id", API_InterestController.update);
 app.delete("/api/interest/:id", API_InterestController.destroy);
 
 // User API routes
