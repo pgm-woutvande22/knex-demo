@@ -5,22 +5,22 @@
  */
 import NavigationItem from "../models/NavigationItem.js";
 import UserItem from "../models/User.js";
+import Pages from "../models/Pages.js"
 
 export const home = async (req, res) => {
   const navItems = await NavigationItem.query();
-  const user = await UserItem.query().findById(1);
+  const userData = await UserItem.query().findById(1);
+  const page = await Pages.query().where('slug', 'home')
+  console.log(page)
 
   const pageData = {
-    title: "Home",
-    content: `
-      <p>Welcome to our website. We are a small company that does great things!</p>
-      <p>Feel free to browse our site and learn more about us.</p>
-    `,
+    title: page[0].title,
+    content: page[0].content,
   };
 
   res.render("pages/home", {
     ...pageData,
-    userData: user,
+    userData,
     menuItems: navItems,
   });
 };

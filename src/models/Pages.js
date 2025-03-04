@@ -4,9 +4,9 @@ import { Model } from "objection";
 // instantiate the model
 Model.knex(knex);
 
-class UserItem extends Model {
+class Pages extends Model {
   static get tableName() {
-    return "users";
+    return "pages";
   }
 
   static get idColumn() {
@@ -16,15 +16,16 @@ class UserItem extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["label", "url"],
+      required: ["title", "slug"],
       properties: {
         id: { type: "integer" },
-        firstname: { type: "string", minLength: 1, maxLength: 255 },
-        lastname: { type: "string", minLength: 1, maxLength: 255 },
-        bio: { type: "string", minLength: 1, maxLength: 255 },
+        title: { type: "string", minLength: 1, maxLength: 255 },
+        slug: { type: "string", minLength: 1, maxLength: 255 },
+        content: { type: "string", minLength: 1 },
+        content: { type: "boolean"},
       },
     };
   }
 }
 
-export default UserItem;
+export default Pages;
